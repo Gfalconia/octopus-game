@@ -1,0 +1,11 @@
+function init(self)
+	factories = {'#enemy1', '#enemy2', '#enemy3', '#enemy4', '#enemy5'}
+	timer.delay(1, true, function()
+		local gameWidth = tonumber(sys.get_config("display.width")) - 200
+		local gameHeight = tonumber(sys.get_config("display.height")) - 200
+		local x1 = math.random(1, 500)
+		local y1 = 0
+		local pos = vmath.vector3(x1, y1, 1)
+		factory.create(factories[math.random(1, 5)], pos, nil, {}, 0.2)
+	end)
+end

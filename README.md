@@ -1,16 +1,21 @@
-# osminog
+# Welcome to Defold
 
-A new Flutter project.
+This project was created from the "mobile" project template. This means that the settings in ["game.project"](defold://open?path=/game.project) have been changed to be suitable for a mobile game:
 
-## Getting Started
+- The screen size is set to 640x1136
+- The projection is set to Fixed Fit
+- Orientation is fixed vertically
+- Android and iOS icons are set
+- Mouse click/single touch is bound to action "touch"
+- A simple script in a game object is set up to receive and react to input
+- Accelerometer input is turned off (for better battery life)
 
-This project is a starting point for a Flutter application.
+[Build and run](defold://build) to see it in action. You can of course alter these settings to fit your needs.
 
-A few resources to get you started if this is your first Flutter project:
+Check out [the documentation pages](https://defold.com/learn) for examples, tutorials, manuals and API docs.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+If you run into trouble, help is available in [our forum](https://forum.defold.com).
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Happy Defolding!
+
+---

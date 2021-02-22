@@ -1,0 +1,9 @@
+function init(self)
+	msg.post(".", "acquire_input_focus")
+end
+function on_input(self, action_id, action)
+	if action.released and gui.pick_node(gui.get_node("restart"), action.x, action.y) then
+		local button = gui.get_node("restart") 
+		msg.post("main:/main#script", "restart")
+	end
+end

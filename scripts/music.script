@@ -1,0 +1,3 @@
+function init(self)
+	sound.play("/music#sound", { gain = 1.0, pan = 0 })
+end

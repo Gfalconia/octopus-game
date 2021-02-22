@@ -1,0 +1,51 @@
+-- =================================================================================================
+-- Defold Tutorial #9 - Intro to Levels, Messages and Menus
+-- main.script
+-- =================================================================================================
+
+-- Initialization ----------------------------------------------------------------------------------
+function init(self)	
+	-- Set the main menu as the starting Game Level for this application
+	msg.post(".", "to_main_menu")
+	self.state = "MAIN_MENU"
+	sound.play("/music#sound", { gain = 1.0, pan = 0 })
+end
+
+-- Message Processing ------------------------------------------------------------------------------
+function on_message(self, message_id, message, sender)
+	if message_id == hash("to_main_menu") then
+		if self.state ~= "MAIN_MENU" then	
+			if self.state == "GAME1_RUNNING" or self.state == "GAME_OVER" then
+				msg.post("/game-proxy#game", "unload")
+				msg.post("/game-over-proxy#game-over", "unload")
+			end
+		end
+		msg.post("/main-menu#main_menu", "enable")
+		self.state = "MAIN_MENU"
+	elseif message_id == hash("restart") then	
+					msg.post("/game-over-proxy#game-over", "unload")
+					msg.post("/game-proxy#game", "load")
+					self.state = "GAME1_RUNNING"
+	elseif message_id == hash("start") then
+					msg.post("/main-menu#main_menu", "disable")
+					msg.post("/game-proxy#game", "load")
+	elseif message_id == hash("proxy_loaded") then
+		if sender == msg.url("/game-proxy#game") then
+			msg.post(sender, "init")
+			msg.post(sender, "start")
+			msg.post(sender, "enable")
+			msg.post(sender, "acquire_input_focus")
+			self.state = "GAME1_RUNNING"
+		end 
+		if sender == msg.url("/game-over-proxy#game-over") then
+			msg.post(sender, "init")
+			msg.post(sender, "game")
+			msg.post(sender, "enable")
+			msg.post(sender, "acquire_input_focus")
+			self.state = "GAME_OVER"
+		end
+	elseif message_id == hash("game_over") then  
+		msg.post("/game-proxy#game", "unload")
+		msg.post("/game-over-proxy#game-over", "load")
+	end
+end

@@ -1,0 +1,13 @@
+function init(self)
+	score = 0
+	score_text = gui.get_node("score")
+	gui.set_text(score_text, score)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("enemy_evaded") then
+		score = score + 1
+		score_text = gui.get_node("score")
+		gui.set_text(score_text, score)
+	end
+end

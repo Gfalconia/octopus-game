@@ -1,0 +1,16 @@
+	function init(self)
+		flip = math.random(0,1)
+		go.animate('.', "position.y", go.PLAYBACK_ONCE_FORWARD, 2000, go.EASING_LINEAR, 3)
+		if flip == 0 then
+		else
+			sprite.set_vflip(".", true)
+		end
+	end
+	function update(self, dt)
+		local p = go.get_position()
+		---print(p.y)
+		if p.y > 1100 then
+			go.delete()
+			msg.post("/game-gui#game-gui", "enemy_evaded")
+		end
+	end
