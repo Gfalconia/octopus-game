@@ -17,7 +17,7 @@ function on_input(self, action_id, action)
 	if action_id == hash("touch") then
 		go.cancel_animations(".", "position")
 		go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, 
-		vmath.vector3(action.screen_x / 1.5, action.screen_y / 1.5 , 1), 
+	    vmath.vector3(action.screen_x / 1.5, action.screen_y / 1.5 , 1), 
 		go.EASING_OUTCUBIC, 1, 0, function(self, url, property) end)
 		return true
 	end
@@ -25,6 +25,14 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("collision_response") then
-		msg.post("main:/main#script", "game_over")
+		if message.other_id == hash("/instance0") or message.other_id == hash("/instance1") then
+			self.speed = vmath.vector3(0, 0, 0)
+			msg.post("main:/main#script", "game_over")
+		end
+	end	
+	if message_id == hash("contact_point_response")  then
+		print(message.normal)
+		print(message.distance)
+		go.set_position(go.get_position() + message.normal * message.distance)
 	end
 end

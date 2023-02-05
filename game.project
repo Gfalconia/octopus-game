@@ -1,6 +1,6 @@
 [project]
 title = octopus
-version = 1.2
+version = 1.4
 
 [bootstrap]
 main_collection = /main/main.collectionc
@@ -18,16 +18,11 @@ display_profiles = /builtins/render/default.display_profilesc
 fullscreen = 0
 
 [ios]
-app_icon_120x120 = /assets/app_icons/icon_120.png
-app_icon_180x180 = /assets/app_icons/icon_180.png
-app_icon_76x76 = /assets/app_icons/icon_76.png
-app_icon_152x152 = /assets/app_icons/icon_152.png
 app_icon_57x57 = /assets/app_icons/icon_57.png
 app_icon_114x114 = /assets/app_icons/icon_114.png
 app_icon_72x72 = /assets/app_icons/icon_72.png
 app_icon_144x144 = /assets/app_icons/icon_144.png
-app_icon_167x167 = /assets/app_icons/icon_167.png
-bundle_identifier = com.example.todo
+bundle_identifier = az.livetv.octopus
 
 [osx]
 bundle_identifier = com.example.todo
@@ -43,8 +38,4 @@ input_method = HiddenInputField
 
 [script]
 shared_state = 1
-
-[physics]
-gravity_y = -1000.0
-scale = 0.01
 
